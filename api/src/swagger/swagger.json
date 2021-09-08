@@ -1,0 +1,53 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Note Stack API NodeJS"
+  },
+  "basePath": "/api",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Faz autenticação do usuário e devolve o token de acesso",
+        "response": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/LoginSucesso"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/LoginInvalido"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LoginSucesso": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "5k41wa6o1i69ng77awjy015yh153hk3"
+        }
+      }
+    },
+    "LoginInvalido": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "example": 400
+        },
+        "erro": {
+          "type": "string",
+          "example": "Parâmetros de entrada inválidos"
+        }
+      }
+    }
+  }
+}
