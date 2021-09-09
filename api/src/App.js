@@ -2,6 +2,7 @@ const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger/swagger.json');
 const LoginController = require('./controllers/LoginController');
+const UsuarioController = require('./controllers/UsuarioController');
 const AppConstants = require('./enum/AppConstants');
 
 const logger = require('./middlewares/logger');
@@ -43,7 +44,10 @@ class App {
 
   #carregarControllers = () => {
     // atribue para a propriedade #controllers a lista de controllers disponiveis na aplicação.
-    this.#controllers = [new LoginController(this.express)];
+    this.#controllers = [
+      new LoginController(this.express),
+      new UsuarioController(this.express),
+    ];
   };
 
   #iniciarServidor = () => {

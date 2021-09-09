@@ -6,21 +6,21 @@ module.exports = (req, res, next) => {
     // exibi mensagens de erro
     error: (message, ...parametrosExtras) => {
       console.error(
-        `[ERROR] traceId=${traceId}, msg=${message}`,
+        `[ERROR] traceId=${traceId}, msg=${message},`,
         ...parametrosExtras
       );
     },
     // exibi mensagens de depuração
     debug: (message, ...parametrosExtras) => {
       console.log(
-        `[DEBUG] traceId=${traceId}, msg=${message}`,
+        `[DEBUG] traceId=${traceId}, msg=${message},`,
         ...parametrosExtras
       );
     },
     // exibi mensagens informativas
     info: (message, ...parametrosExtras) => {
       console.info(
-        `[INFO] traceId=${traceId}, msg=${message}`,
+        `[INFO] traceId=${traceId}, msg=${message},`,
         ...parametrosExtras
       );
     },

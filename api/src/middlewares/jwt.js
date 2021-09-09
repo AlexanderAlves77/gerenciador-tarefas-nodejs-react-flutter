@@ -7,8 +7,12 @@ const rotasPublicas = [
     metodo: 'POST',
   },
   {
-    url: '/api/docs',
+    url: '/api/docs/*',
     metodo: 'GET',
+  },
+  {
+    url: '/api/usuario',
+    metodo: 'POST',
   },
 ];
 
@@ -16,9 +20,19 @@ module.exports = (req, res, next) => {
   req.logger.info('verificando permissão de acesso à rota', `rota=${req.url}`);
 
   // verifica se a requisição recebida é de alguma rota pública
-  const rotaPublica = rotasPublicas.find(
-    rota => rota.url === req.url && rota.metodo === req.method.toUpperCase()
-  );
+  const rotaPublica = rotasPublicas.find(rota => {
+    const rotaPublicaContemWidcard = rota.url.indexOf('*') !== -1;
+    const urlRequisicaoContemParteDaRotaPublica =
+      req.url.indexOf(rota.url.replace('*', '')) !== -1;
+
+    return (
+      // verifica se a rota da requisição é identica
+      (rota.url === req.url ||
+        // ou a rota pública contém um '*' e a rota da requisição possui como parte da url a rota públia
+        (rotaPublicaContemWidcard && urlRequisicaoContemParteDaRotaPublica)) &&
+      rota.metodo === req.method.toUpperCase()
+    );
+  });
 
   if (rotaPublica) {
     req.logger.info('Rota pública, requisição liberada');
