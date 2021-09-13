@@ -1,4 +1,5 @@
 const HttpController = require('./HttpController');
+const UsuarioService = require('../services/UsuarioService');
 
 class UsuarioController extends HttpController {
   configurarRotas(baseUrl) {
@@ -6,12 +7,32 @@ class UsuarioController extends HttpController {
     this.express.post(`${baseUrl}/usuario`, this.cadastrar.bind(this));
   }
 
-  cadastrar(req, res) {
+  async cadastrar(req, res) {
     const dadosUsuario = req.body;
 
-    req.logger.info('Usuário cadastrado com sucesso!!!');
+    try {
+      const servico = new UsuarioService();
+      const retornoServico = await servico.cadastrar(dadosUsuario);
 
-    res.json(dadosUsuario);
+      if (retornoServico.erros) {
+        return res.status(400).json({
+          status: 400,
+          erro: retornoServico.erros.join(', '),
+        });
+      }
+
+      req.logger.info('Usuário cadastrado com sucesso!!!');
+      res.json({
+        msg: 'Usuário criado com sucesso!',
+      });
+      //
+    } catch (error) {
+      req.logger.error('Erro ao cadastrar usuário' + error.message);
+      res.status(500).json({
+        erro: 'Ocorreu um problema ao cadastrar usuário, tente novamente mais tarde.',
+        status: 500,
+      });
+    }
   }
 }
 
