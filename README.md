@@ -29,10 +29,10 @@
 1. Concluir API de cadastro de usuário; 
 1. Tirar Mock da API de login;
 1. Criar API de tarefas;
-	1.1 Criar Post;
-	1.1 Criar Get com filtros;
-	1.1 Criar Put;
-	1.1 Criar Delete;
+	- Criar Post;
+	- Criar Get com filtros;
+	- Criar Put;
+	- Criar Delete;
 	
 ## Projeto Frontend
 ### Navegação - Login
@@ -41,20 +41,30 @@
 1. Caso os dados informados sejam válidos, direcionar o usuário para a home do gerenciador;
 1. Caso os dados sejam inválidos, exibir a mensagem adequada para o usuário;
 
+### Passos
+1. Criar projeto React;
+1. Criar componente de Login;
+1. Criar componente da home;
+1. Integrar listagem e filtros com API de busca de tarefas; 
+1. Criar modal de adicionar tarefa;
+1. Integrar modal de adicionar com a API de adicionar;
+1. Criar modal de edição e deleção de tarefa;
+1. Integrar modal com as APIs de edição e deleção;
+
 ### Navegação - Filtrar Tarefas 
 1. Quando o usuário tiver tarefas cadastradas, elas serão listadas na totalidade, separadas por ativas e concluídas;
 1. Para facilitar a gestão, o usuário pode pesquisar por período de data e status, e o sistema deverá exibir somente atividades no filtro selecionado;
 1. Cada tarefa cadastrada exibirá uma linha com os seguintes dados:
-	1.1 Nome da tarega;
-	1.1 Data prevista de conclusão;
-	1.1 Caso a tarefa esteja em aberto, será exibido um botão para que o usuário possa concluí-la e informar a data real de conclusão;
-	1.1 Caso a tarefa esteja concluída, será exibida a data de conclusão além da prevista;
+	- Nome da tarega;
+	- Data prevista de conclusão;
+	- Caso a tarefa esteja em aberto, será exibido um botão para que o usuário possa concluí-la e informar a data real de conclusão;
+	- Caso a tarefa esteja concluída, será exibida a data de conclusão além da prevista;
 
 ### Navegação - Criar Tarefas
 1. O usuário poderá, a qualquer momento, criar uma tarefa ao clicar no botão "Adicionar uma tarefa";
 1. Será exibido um modal com os seguintes dados:
-	1.1 Nome da tarefa;
-	1.1 Data de previsão de conclusão;
+	- Nome da tarefa;
+	- Data de previsão de conclusão;
 1. Ao informar os campos, o sistema fará a validação e, caso esteja tudo correto, fazer a inserção no banco de dados;
 1. Caso algum dados esteja inválido, informar para o usuário para que ele possa ajustar a informação;
 
