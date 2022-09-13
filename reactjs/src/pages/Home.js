@@ -1,7 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Header } from '../components/Header'
 
 export const Home = (props) => {
-    return (
-        <h1>Gerenciador de Tarefa - Home</h1>
-    )
+  const sair = () => {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('usuarioNome')
+    localStorage.removeItem('usuarioEmail')
+    props.setAccessToken('')
+  }
+
+  return (
+    <>
+      <Header sair={sair} />
+    </>
+  )
 }
