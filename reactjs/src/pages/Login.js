@@ -15,6 +15,7 @@ export const Login = (props) => {
     try {
       event.preventDefault()
       setIsLoading(true)
+      setMsgErro('')
 
       const body = { login, senha }
 
@@ -31,7 +32,9 @@ export const Login = (props) => {
 
       if (e?.response?.data?.erro) {
         setMsgErro(e.response.data.erro)
-      }      
+      } else {
+        setMsgErro('Não foi possível efeturar o login, fale com o administrador.')
+      }
     }
 
     setIsLoading(false)
