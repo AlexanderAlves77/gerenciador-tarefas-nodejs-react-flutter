@@ -1,6 +1,8 @@
 import React from 'react'
 import { Filtros } from '../components/Filtros'
+import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
+import { Listagem } from '../components/Listagem'
 
 export const Home = (props) => {
   const sair = () => {
@@ -14,6 +16,8 @@ export const Home = (props) => {
     <>
       <Header sair={sair} />
       <Filtros />
+      <Listagem />
+      <Footer />
     </>
   )
 }
