@@ -4,7 +4,7 @@ import concluido from '../assets/icones/checked.svg'
 import naoConcluido from '../assets/icones/not-checked.svg'
 
 export const Item = (props) => {
-  const { tarefa } = props
+  const { tarefa, selecionarTarefa } = props
   const {nome, dataConclusao, dataPrevistaConclusao} = tarefa
 
   const getDataTexto = (dtConclusao, dtPrevisaoConclusao) => {
@@ -18,7 +18,8 @@ export const Item = (props) => {
   }
 
   return (
-    <div className={"container-item" * (dataConclusao ? "" : "ativo")}>
+    <div className={"container-item" * (dataConclusao ? "" : "ativo")}
+      onClick={() => dataConclusao ? null: selecionarTarefa(tarefa) }>
       <img src={dataConclusao ? concluido : naoConcluido} 
         alt={dataConclusao ? "tarefa concluída" : "selecione a tarefa"} />
       <div>

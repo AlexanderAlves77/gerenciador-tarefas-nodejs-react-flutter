@@ -80,7 +80,7 @@ export const Home = (props) => {
         setPeriodoAte={setPeriodoAte}
         setStatus={setStatus}
       />
-      <Listagem tarefas={tarefas} />
+      <Listagem tarefas={tarefas} getTarefasComFiltro={getTarefasComFiltro} />
       <Footer showModal={() => setShowModal(true)} />
 
       <Modal className="container-modal" show={showModal}
