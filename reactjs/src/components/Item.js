@@ -5,7 +5,7 @@ import naoConcluido from '../assets/icones/not-checked.svg'
 
 export const Item = (props) => {
   const { tarefa } = props
-  const {nome, dataConclusao, dataPrevisaoConclusao} = tarefa
+  const {nome, dataConclusao, dataPrevistaConclusao} = tarefa
 
   const getDataTexto = (dtConclusao, dtPrevisaoConclusao) => {
     if (dtConclusao) {
@@ -23,7 +23,7 @@ export const Item = (props) => {
         alt={dataConclusao ? "tarefa concluída" : "selecione a tarefa"} />
       <div>
         <p className={dataConclusao ? "concluido" : ""}>{nome}</p>
-        <span>{getDataTexto(dataConclusao, dataPrevisaoConclusao)}</span>
+        <span>{getDataTexto(dataConclusao, dataPrevistaConclusao)}</span>
       </div>
     </div>
   )
