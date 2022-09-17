@@ -16,6 +16,7 @@ export const Listagem = (props) => {
   const [error, setError] = useState('')
 
   const selecionarTarefa = (tarefa) => {
+    setError('')
     setIdTarefa(tarefa.id)
     setNomeTarefa(tarefa.nome)
     setDataPrevisaoTarefa(moment(tarefa.dataPrevistaConclusao).format('yyyy-MM-DD'))
@@ -50,6 +51,32 @@ export const Listagem = (props) => {
         setError(e.response.data.erro)
       } else {
         setError('Não foi possível cadastrar a tarefa, fale com o administrador.')
+      }
+    }
+  }
+
+  const excluirTarefa = async () => {
+    try {
+      if (!idTarefa) {
+        setError("Favor informar a tarefa a ser excluída")
+        return
+      }
+      
+      await executaRequisicao('tarefa/'+idTarefa, 'delete')
+      await getTarefasComFiltro()
+      setNomeTarefa('')
+      setDataPrevisaoTarefa('')
+      setDataConclusao('')
+      setIdTarefa(null)
+      setShowModal(false)    
+
+    } catch (e) {
+      console.log(e)
+
+      if (e?.response?.data?.erro) {
+        setError(e.response.data.erro)
+      } else {
+        setError('Não foi possível excluir a tarefa, fale com o administrador.')
       }
     }
   }
@@ -106,9 +133,7 @@ export const Listagem = (props) => {
         <Modal.Footer>
           <div className="buttons col-12">
             <button onClick={atualizarTarefa}>Alterar</button>
-            <span onClick={() => {
-              setShowModal(false)
-            }}>Excluir tarefa</span>
+            <span onClick={excluirTarefa}>Excluir tarefa</span>
           </div>
         </Modal.Footer>
       </Modal>
