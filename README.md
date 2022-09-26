@@ -69,6 +69,38 @@
 1. Caso algum dados esteja inválido, informar para o usuário para que ele possa ajustar a informação;
 
 
+## Projeto Mobile
+### Navegação - Login
+1. Nessa tela teremos que verificar se o usuário/senha informados são válidos;
+1. Deverá exibir as informações em caso de erro para o usuário; 
+1. Após validado, o acesso deverá direcionar o usuário para a página principal da aplicação e guardar o token de acesso no navegador;
+
+### Navegação - Home
+1. Nessa tela desenvolveremos:
+	- Header;
+	- Filtros;
+	- Listagem;
+	- Footer;	
+1. Deverá buscar os dados das tarefas da API para que o usuários possa manipular e filtrar suas tarefas;
+1. No Header deve haver uma opção para deslogar o usuário;
+1. No Footer mobile deverá exibir o botão de adicionar tarefa para melhorar usabilidade.
+
+### Navegação - Filtro / Listagem
+1. Componente de Filtro deverá ser exibido na totalidade em telas maiores e em telas menores, só será exibido atráves de clique no ícone;
+1. Ao alterar qualquer um dos filtros, deverá ser enviada uma nova requisição para a API com os dados informados;
+1. A listagem deverá ser exibida exatamente os dados retornados pelas pesquisas(voltando ou não itens);
+1. A listagem deve diferenciar registros ainda não concluídos e concluídos; 
+1. Somente uma tarefa em aberto pode ser editada.
+
+
+
+
+
+
+
+
+
+
 
 
 
